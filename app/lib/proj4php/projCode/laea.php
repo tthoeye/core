@@ -76,7 +76,7 @@ class Proj4phpProjLaea
           break;
         case $this->OBLIQ:
           $this->rq = sqrt(.5 * $this->qp);
-          sinphi = sin($this->lat0);
+          $sinphi = sin($this->lat0);
           $this->sinb1 = Proj4php::$common->qsfnz($this->e, $sinphi) / $this->qp;
           $this->cosb1 = sqrt(1. - $this->sinb1 * $this->sinb1);
           $this->dd = cos($this->lat0) / (sqrt(1. - $this->es * $sinphi * $sinphi) * $this->rq * $this->cosb1);
@@ -113,8 +113,8 @@ class Proj4phpProjLaea
         switch ($this->mode) {
           case $this->OBLIQ:
           case $this->EQUIT:
-            y = ($this->mode == $this->EQUIT) ? 1. + $cosphi * $coslam : 1. + $this->sinph0 * $sinphi + $this->cosph0 * $cosphi * $coslam;
-            if (y <= Proj4php::$common->EPSLN) {
+            $y = ($this->mode == $this->EQUIT) ? 1. + $cosphi * $coslam : 1. + $this->sinph0 * $sinphi + $this->cosph0 * $cosphi * $coslam;
+            if ($y <= Proj4php::$common->EPSLN) {
               Proj4php::reportError("laea:fwd:y less than eps");
               return null;
             }
@@ -173,7 +173,7 @@ class Proj4phpProjLaea
             if ($this->mode == $this->OBLIQ) {
               $y = $this->ymf * $b * ($this->cosb1 * $sinb - $this->sinb1 * $cosb * $coslam);
             } else {
-              $y = (b = sqrt(2. / (1. + $cosb * $coslam))) * $sinb * $this->ymf;
+              $y = ($b = sqrt(2. / (1. + $cosb * $coslam))) * $sinb * $this->ymf;
             }
             $x = $this->xmf * $b * $cosb * $sinlam;
             break;
@@ -269,10 +269,10 @@ class Proj4phpProjLaea
               return $p;
             }
             $sCe = 2. * asin(.5 * $rho / $this->rq);
-            $cCe = cos$(sCe);
+            $cCe = cos($sCe);
             $x *= ($sCe = sin($sCe));
             if ($this->mode == $this->OBLIQ) {
-              $ab = $cCe * $this->sinb1 + $y * $sCe * $this->cosb1 / $rho
+              $ab = $cCe * $this->sinb1 + $y * $sCe * $this->cosb1 / $rho;
               $q = $this->qp * $ab;
               $y = $rho * $this->cosb1 * $cCe - $y * $this->sinb1 * $sCe;
             } else {

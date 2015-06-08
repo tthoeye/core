@@ -183,7 +183,7 @@ class Proj4phpProjOmerc
     $dlon = Proj4php::$common->adjust_lon($lon - $this->longc);
     $vl = sin($this->bl * $dlon);
     if (abs(abs($lat) - Proj4php::$common->HALF_PI) > Proj4php::$common->EPSLN) {
-       ts1 = Proj4php::$common.tsfnz($this->e, $lat, $sin_phi);
+       $ts1 = Proj4php::$common.tsfnz($this->e, $lat, $sin_phi);
        $q = $this->el / (pow($ts1, $this->bl));
        $s = .5 * ($q - 1.0 / $q);
        $t = .5 * ($q + 1.0/ $q);

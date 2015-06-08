@@ -132,7 +132,7 @@ class Proj4phpProjNzmg
    *     1 -> m accuracy -- suitable for most mapping applications
    *     2 -> mm accuracy
    */
-  protected $iterations= 1,
+  protected $iterations= 1;
 
   public function init()
   {
@@ -194,7 +194,7 @@ class Proj4phpProjNzmg
     $d_phi_n = 1;  // d_phi^0
 
     $d_psi = 0;
-    for (n = 1; n <= 10; n++) {
+    for ($n = 1; $n <= 10; $n++) {
       $d_phi_n = $d_phi_n * $d_phi;
       $d_psi = $d_psi + $this->A[$n] * $d_phi_n;
     }
@@ -207,7 +207,7 @@ class Proj4phpProjNzmg
     $th_n_re1;                                                   $th_n_im1;
 
     $z_re = 0;                                                   $z_im = 0;
-    for (n = 1; n <= 6; n++) {
+    for ($n = 1; $n <= 6; $n++) {
       $th_n_re1 = $th_n_re*$th_re - $th_n_im*$th_im;                     $th_n_im1 = $th_n_im*$th_re + $th_n_re*$th_im;
       $th_n_re = $th_n_re1;                                           $th_n_im = $th_n_im1;
       $z_re = $z_re + $this->B_re[$n]*$th_n_re - $this->B_im[$n]*$th_n_im;    $z_im = $z_im + $this->B_im[$n]*$th_n_re + $this->B_re[$n]*$th_n_im;
@@ -243,7 +243,7 @@ class Proj4phpProjNzmg
     $z_n_re1;                                                              $z_n_im1;
 
     $th_re = 0;                                                            $th_im = 0;
-    for (n = 1; n <= 6; n++) {
+    for ($n = 1; $n <= 6; $n++) {
       $z_n_re1 = $z_n_re*$z_re - $z_n_im*$z_im;                                    $z_n_im1 = $z_n_im*$z_re + $z_n_re*$z_im;
       $z_n_re = $z_n_re1;                                                       $z_n_im = $z_n_im1;
       $th_re = $th_re + $this->C_re[$n]*$z_n_re - $this->C_im[$n]*$z_n_im;              $th_im = $th_im + $this->C_im[$n]*$z_n_re + $this->C_re[$n]*$z_n_im;
@@ -266,7 +266,7 @@ class Proj4phpProjNzmg
 
        $th_n_re = 1;                                                              $th_n_im = 0;
        $den_re = $this->B_re[1];                                                $den_im = $this->B_im[1];
-       for (n = 2; n <= 6; n++) {
+       for ($n = 2; $n <= 6; $n++) {
          $th_n_re1 = $th_n_re*$th_re - $th_n_im*$th_im;                               $th_n_im1 = $th_n_im*$th_re + $th_n_re*$th_im;
          $th_n_re = $th_n_re1;                                                     $th_n_im = $th_n_im1;
          $den_re = $den_re + $n * ($this->B_re[$n]*$th_n_re - $this->B_im[$n]*$th_n_im);    $den_im = $den_im + $n * ($this->B_im[n]*$th_n_re + $this->B_re[$n]*$th_n_im);

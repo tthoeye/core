@@ -113,7 +113,7 @@ class Proj4phpProjAea
     if ($this->e3 >= 1e-10) {
       $con = 1 - .5 * (1.0 -$this->es) * log((1.0 - $this->e3) / (1.0 + $this->e3))/$this->e3;
       if (abs(abs($con) - abs($qs)) > .0000000001) {
-          lat = $this->phi1z($this->e3, $qs);
+          $lat = $this->phi1z($this->e3, $qs);
       } else {
           if ($qs >= 0) {
              $lat = .5 * Proj4phpCommon::PI;

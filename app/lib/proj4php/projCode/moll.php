@@ -58,7 +58,7 @@ class Proj4phpProjMoll
 
     /* Iterate using the Newton-Raphson method to find theta
       -----------------------------------------------------*/
-    for ($i=0;true;i++) {
+    for ($i=0;true;$i++) {
        $delta_theta = -($theta + sin($theta) - $con)/ (1.0 + cos($theta));
        $theta += $delta_theta;
        if (abs($delta_theta) < Proj4php::$common->EPSLN) break;

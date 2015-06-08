@@ -133,8 +133,8 @@ class Proj4phpProjStere
     	$sinphi = sin($lat);
     	if ($this->mode == $this->OBLIQ || $this->mode == $this->EQUIT) {
         $X = 2. * atan($this->ssfn_($lat, $sinphi, $this->e));
-    		sinX = sin($X - Proj4php::$common->HALF_PI);
-    		cosX = cos($X);
+    		$sinX = sin($X - Proj4php::$common->HALF_PI);
+    		$cosX = cos($X);
     	}
     	switch ($this->mode) {
     	case $this->OBLIQ:
@@ -244,7 +244,7 @@ class Proj4phpProjStere
     		$halfe = -.5 * $this->e;
     		break;
     	}
-    	for (i = $this->NITER; i--; $phi_l = $lat) { //check this
+    	for ($i = $this->NITER; $i--; $phi_l = $lat) { //check this
     		$sinphi = $this->e * sin($phi_l);
     		$lat = 2. * atan($tp * pow((1.+$sinphi)/(1.-$sinphi), $halfe)) - $pi2;
     		if (abs(phi_l - lat) < $this->CONV) {

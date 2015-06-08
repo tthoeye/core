@@ -38,7 +38,7 @@ class Proj4phpProjCass
 {
 	public function init() {
     if (!$this->sphere) {
-      $this->en = $this->pj_enfn($this->es)
+      $this->en = $this->pj_enfn($this->es);
       $this->m0 = $this->pj_mlfn($this->lat0, sin($this->lat0), cos($this->lat0), $this->en);
     }
   }

@@ -104,13 +104,16 @@ class Proj4phpProjSomerc
         return;
       }
       // S = log(tan(PI / 4.0 + phy / 2.0));
-      S = 1.0
-              / $this->alpha
+      $S = 1.0;
+              /* @todo fix this
+               * $this->alpha
               * (log(tan($PI / 4.0 + $b / 2.0)) - $this->K)
               + $this->e
               * log(tan($PI / 4.0
               + asin($this->e * sin($phy))
               / 2.0));
+               * 
+               */
       $prevPhy = $phy;
       $phy = 2.0 * atan(exp($S)) - $PI / 2.0;
     }

@@ -155,8 +155,9 @@ class Proj4phpProjPoly
 			$b = $al * $al + ($p->x/$this->a) * ($p->x/$this->a);
 			$iflg = phi4z($this->es, $this->e0, $this->e1, $this->e2, $this->e3, $this->al, $b, $c, $lat);
 			if ($iflg != 1) return(iflg);
-			$lon = Proj4php::$common->adjust_lon((Proj4php::$common->asinz($p->x * $ / $this->a) / sin($lat)) + $this->long0);
-		}
+                        // @todo this is probably broken
+			$lon = Proj4php::$common->adjust_lon((Proj4php::$common->asinz($p->x * $a / $this->a) / sin($lat)) + $this->long0);
+        }
 
 		$p->x=$lon;
 		$p->y=$lat;
